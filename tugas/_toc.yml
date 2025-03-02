@@ -5,4 +5,4 @@ format: jb-book
 root: intro
 chapters:
 - file: About_Me
-- file: Tugas1
+- file: Data_Understanding
