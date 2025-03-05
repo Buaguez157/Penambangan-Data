@@ -6,3 +6,4 @@ root: intro
 chapters:
 - file: About_Me
 - file: Data_Understanding
+- file: 2_Tipe_Data
