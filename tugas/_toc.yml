@@ -8,3 +8,4 @@ chapters:
 - file: Data_Understanding
 - file: 2_Tipe_Data
 - file: LOF
+- file: Naive_Bayes
