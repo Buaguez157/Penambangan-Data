@@ -9,3 +9,4 @@ chapters:
 - file: 2_Tipe_Data
 - file: LOF
 - file: Naive_Bayes
+- file: K_Means

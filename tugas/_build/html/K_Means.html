@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Penambangan Data</title>
+    <title>K-Means Clustering Iris Data &#8212; Penambangan Data</title>
   
   
   
@@ -57,10 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'K_Means';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="About Me" href="About_Me.html" />
+    <link rel="prev" title="Naive Bayes" href="Naive_Bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -143,7 +141,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -174,19 +172,19 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Intro
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="About_Me.html">About Me</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Memahami Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_Tipe_Data.html"><em><strong>Tipe Data Understanding &amp; Deteksi Outlier Menggunakan KNN</strong></em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOF.html">Local Outlier Factor (LOF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Naive Bayes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="K_Means.html">K-Means Clustering Iris Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">K-Means Clustering Iris Data</a></li>
 </ul>
 
     </div>
@@ -258,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FK_Means.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +286,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/K_Means.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +296,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -370,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>K-Means Clustering Iris Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,11 +382,118 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
-<p>Selamat datang di profil saya! Saya seorang mahasiswa yang sedang mempelajari <strong>Penambangan Data</strong> di <strong>Universitas Trunojoyo Madura</strong>. Saya tertarik untuk mengeksplorasi berbagai teknik dalam mengolah dan menganalisis data besar untuk menemukan wawasan berharga.</p>
-<hr class="docutils" />
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="k-means-clustering-iris-data">
+<h1>K-Means Clustering Iris Data<a class="headerlink" href="#k-means-clustering-iris-data" title="Link to this heading">#</a></h1>
+<p>Langkah-langkah Algoritma K-Means pada Dataset Iris
+##1. Tentukan jumlah kluster (K)
+Misalnya, kita ingin membagi data menjadi K = 3 kluster (karena di dataset Iris ada 3 spesies bunga).</p>
+<p><code class="docutils literal notranslate"><span class="pre">kmeans</span> <span class="pre">=</span> <span class="pre">KMeans(n_clusters=3,</span> <span class="pre">random_state=42)</span></code></p>
+<p>Menentukan bahwa data akan dikelompokkan menjadi 3 klaster.</p>
+<p>##2. Pilih K centroid awal secara acak
+Pilih secara acak K buah data dari dataset sebagai centroid awal.
+Misalnya, kita acak pilih 3 titik sebagai centroid awal.</p>
+<p>Ini dilakukan otomatis oleh Scikit-learn ketika KMeans dibuat dan saat <code class="docutils literal notranslate"><span class="pre">fit_predict()</span></code> dipanggil.
+Secara default menggunakan metode k-means++ untuk memilih centroid awal yang tersebar baik.</p>
+<p>##3. Hitung jarak setiap data ke tiap centroid
+Gunakan metrik seperti Euclidean distance untuk menghitung jarak dari setiap titik data ke masing-masing centroid.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fit_predict():</span></code></p>
+<ul class="simple">
+<li><p>Menghitung jarak dari setiap titik ke semua centroid</p></li>
+<li><p>Mengembalikan label klaster (disimpan di labels)</p></li>
+</ul>
+<p>##4. Kelompokkan data berdasarkan centroid terdekat
+Setiap data akan masuk ke kluster yang memiliki centroid terdekat dengannya.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Data dikelompokkan berdasarkan centroid terdekat → label 0, 1, atau 2 disimpan di labels.</p>
+<p>##5. Hitung ulang centroid dari rata-rata anggota kluster
+Untuk tiap kluster, hitung rata-rata (mean) dari semua anggota fitur (misalnya panjang dan lebar kelopak/daun), lalu jadikan hasilnya sebagai centroid baru.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+</pre></div>
+</div>
+<p>Setelah setiap iterasi, centroid dihitung ulang sebagai rata-rata dari semua anggota dalam klaster tersebut.</p>
+<p>##6. Ulangi langkah 3–5 hingga konvergen
+Lanjutkan proses:</p>
+<ul class="simple">
+<li><p>Hitung ulang jarak ke centroid baru</p></li>
+<li><p>Kelompokkan ulang</p></li>
+<li><p>Update centroid
+Ulangi hingga tidak ada perubahan signifikan (misalnya kluster tidak berubah lagi atau perubahan centroid sangat kecil).</p></li>
+</ul>
+<p>Semua ini terjadi secara otomatis dalam <code class="docutils literal notranslate"><span class="pre">fit_predict()</span></code> hingga:</p>
+<ul class="simple">
+<li><p>Klaster stabil</p></li>
+<li><p>Atau batas iterasi tercapai</p></li>
+</ul>
+<p>#💡 Reminder! (Terkait Data Iris)
+Dataset Iris memiliki 150 data bunga dengan 4 fitur:</p>
+<ul class="simple">
+<li><p>Sepal Length, Sepal Width, Petal Length, Petal Width</p></li>
+</ul>
+<p>Cocok untuk clustering karena terdiri dari 3 kelas bunga:</p>
+<ul class="simple">
+<li><p>Setosa, Versicolor, Virginica (tidak digunakan secara eksplisit di K-Means karena unsupervised)</p></li>
+</ul>
+<p>#Implementasi algoritma K-Means pada dataset Iris menggunakan Python + Scikit-learn</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="c1"># Load dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>        <span class="c1"># Fitur (4 dimensi: sepal length, sepal width, petal length, petal width)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>      <span class="c1"># Label asli (tidak digunakan langsung dalam clustering)</span>
+
+<span class="c1"># PCA untuk reduksi 4 dimensi ke 2 komponen</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi data asli tanpa label cluster (tidak ada warna berbeda)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Data awal tanpa cluster</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data Awal Tanpa Kluster (PCA-Reduced)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PCA 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PCA 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># KMeans clustering</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1"># Hasil prediksi cluster untuk setiap data poin</span>
+<span class="n">centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span> <span class="c1"># Pusat dari tiap cluster dalam ruang asli 4D.</span>
+<span class="n">centroids_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">centroids</span><span class="p">)</span> <span class="c1"># Proyeksi dari centroid ke ruang PCA 2D agar bisa divisualisasikan.</span>
+
+<span class="c1"># Plot 2: Hasil clustering</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Cluster </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Centroids&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hasil K-Means Clustering (PCA-Reduced)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PCA 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PCA 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1a89f796f7570bd66d3037d726a68bcee79fdd4c67803b44aea4774f95a416e7.png" src="_images/1a89f796f7570bd66d3037d726a68bcee79fdd4c67803b44aea4774f95a416e7.png" />
+</div>
 </div>
 </section>
 
@@ -422,14 +527,14 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="About_Me.html"
-       title="next page">
+    <a class="left-prev"
+       href="Naive_Bayes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">About Me</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Naive Bayes</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

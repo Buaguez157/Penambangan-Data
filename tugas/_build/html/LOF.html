@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -185,6 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Tipe_Data.html"><em><strong>Tipe Data Understanding &amp; Deteksi Outlier Menggunakan KNN</strong></em></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Local Outlier Factor (LOF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K_Means.html">K-Means Clustering Iris Data</a></li>
 </ul>
 
     </div>
@@ -523,9 +524,9 @@ document.write(`
 <p>Kode berikut digunakan untuk menghitung LOF dengan Python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
 
 <span class="c1"># Data dari spotify</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
@@ -595,7 +596,7 @@ Lagu 10: LOF Score = -0.9069477634339815
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4dd0c6755d4c9b01dce1470ed98776a7cd92ce44db5fb9d1403b4fbc15f86190.png" src="_images/4dd0c6755d4c9b01dce1470ed98776a7cd92ce44db5fb9d1403b4fbc15f86190.png" />
+<img alt="_images/d6fea3292f4e4f194464bb91dbe57fc47f2efe83523c8a3f4dd41a886b198d42.png" src="_images/d6fea3292f4e4f194464bb91dbe57fc47f2efe83523c8a3f4dd41a886b198d42.png" />
 </div>
 </div>
 <section id="penjelasan-hasil">
@@ -621,7 +622,7 @@ Lagu 10: LOF Score = -0.9069477634339815
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpatches</span>
 
 <span class="c1"># Model LOF</span>
 <span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -662,7 +663,7 @@ Lagu 10: LOF Score = -0.9069477634339815
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da782e9a9a4df588fa4f839d237f3d016d26189009a995087d4aa975456ab71e.png" src="_images/da782e9a9a4df588fa4f839d237f3d016d26189009a995087d4aa975456ab71e.png" />
+<img alt="_images/00947a63d2cdb39be08427cde20dea3931af211ff9e943f70560e940cc492447.png" src="_images/00947a63d2cdb39be08427cde20dea3931af211ff9e943f70560e940cc492447.png" />
 </div>
 </div>
 </section>
