@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -185,6 +185,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><em><strong>Tipe Data Understanding &amp; Deteksi Outlier Menggunakan KNN</strong></em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOF.html">Local Outlier Factor (LOF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K_Means.html">K-Means Clustering Iris Data</a></li>
 </ul>
 
     </div>
@@ -405,7 +406,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>mysql-connector-python<span class="w"> </span>psycopg2
 
-<span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mysql.connector</span>
 
 <span class="c1"># Koneksi ke MySQL</span>
 <span class="n">mysql_conn</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
@@ -425,7 +426,7 @@ document.write(`
 <span class="n">mysql_data</span> <span class="o">=</span> <span class="n">mysql_cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data mysql: &quot;</span><span class="p">,</span> <span class="n">mysql_data</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
 
 <span class="c1"># Koneksi ke PostgreSQL</span>
 <span class="n">postgres_conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
@@ -445,7 +446,7 @@ document.write(`
 <span class="n">postgres_data</span> <span class="o">=</span> <span class="n">postgres_cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data postgress: &quot;</span><span class="p">,</span> <span class="n">postgres_data</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># Mengonversi ke DataFrame Pandas</span>
 <span class="n">mysql_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mysql_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">desc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">desc</span> <span class="ow">in</span> <span class="n">mysql_cursor</span><span class="o">.</span><span class="n">description</span><span class="p">])</span>
@@ -459,8 +460,8 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Gabungan: &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Melihat 5 baris pertama dari mysql_df</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data 5 baris pertama dari MySQL:&quot;</span><span class="p">)</span>
@@ -505,7 +506,7 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Informasi Tipe Data:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
@@ -543,20 +544,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mysql-connector-python in /usr/local/python/3.12.1/lib/python3.12/site-packages (9.2.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mysql-connector-python in /usr/local/python/3.12.1/lib/python3.12/site-packages (9.3.0)
 Requirement already satisfied: psycopg2 in /usr/local/python/3.12.1/lib/python3.12/site-packages (2.9.10)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.3.1</span> -&gt; <span class=" -Color -Color-Green">25.0.1</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.0.1</span> -&gt; <span class=" -Color -Color-Green">25.1.1</span>
 <span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">python3 -m pip install --upgrade pip</span>
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">MySQLInterfaceError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/connection_cext.py:365,</span> in <span class="ni">CMySQLConnection._open_connection</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">365</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cmysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">cnx_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cmysql</span><span class="o">.</span><span class="n">converter_str_fallback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_converter_str_fallback</span>
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/connection_cext.py:354,</span> in <span class="ni">CMySQLConnection._open_connection</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">354</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cmysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">cnx_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cmysql</span><span class="o">.</span><span class="n">converter_str_fallback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_converter_str_fallback</span>
 
 <span class="ne">MySQLInterfaceError</span>: Unknown MySQL server host &#39;irismysql-2739-irismysql-2739.l.aivencloud.com&#39; (-2)
 
@@ -564,7 +565,7 @@ Requirement already satisfied: psycopg2 in /usr/local/python/3.12.1/lib/python3.
 
 <span class="ne">DatabaseError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">mysql.connector</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Koneksi ke MySQL</span>
 <span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">mysql_conn</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">host</span><span class="o">=</span><span class="s2">&quot;irismysql-2739-irismysql-2739.l.aivencloud.com&quot;</span><span class="p">,</span>  <span class="c1"># Ganti dengan host MySQL Anda</span>
@@ -582,36 +583,31 @@ Requirement already satisfied: psycopg2 in /usr/local/python/3.12.1/lib/python3.
 <span class="ne">--&gt; </span><span class="mi">322</span>     <span class="k">return</span> <span class="n">CMySQLConnection</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">323</span> <span class="k">return</span> <span class="n">MySQLConnection</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/connection_cext.py:153,</span> in <span class="ni">CMySQLConnection.__init__</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">153</span>         <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span>     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/connection_cext.py:142,</span> in <span class="ni">CMySQLConnection.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">142</span>         <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/abstracts.py:1529,</span> in <span class="ni">MySQLConnectionAbstract.connect</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1526</span>     <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1528</span> <span class="bp">self</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1529</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_connection</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1531</span> <span class="n">charset</span><span class="p">,</span> <span class="n">collation</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1532</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;charset&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1533</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;collation&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1534</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1535</span> <span class="k">if</span> <span class="n">charset</span> <span class="ow">or</span> <span class="n">collation</span><span class="p">:</span>
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/abstracts.py:1605,</span> in <span class="ni">MySQLConnectionAbstract.connect</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1602</span>     <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1604</span> <span class="bp">self</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1605</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_connection</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1607</span> <span class="n">charset</span><span class="p">,</span> <span class="n">collation</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1608</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;charset&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1609</span>     <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;collation&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1610</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1611</span> <span class="k">if</span> <span class="n">charset</span> <span class="ow">or</span> <span class="n">collation</span><span class="p">:</span>
 
-<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/connection_cext.py:370,</span> in <span class="ni">CMySQLConnection._open_connection</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span>         <span class="bp">self</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">str_fallback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_converter_str_fallback</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span> <span class="k">except</span> <span class="n">MySQLInterfaceError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">370</span>     <span class="k">raise</span> <span class="n">get_mysql_exception</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span>         <span class="n">msg</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">errno</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">sqlstate</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">sqlstate</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span>     <span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">374</span> <span class="bp">self</span><span class="o">.</span><span class="n">_do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span> <span class="k">if</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ssl_disabled</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmysql</span><span class="p">,</span> <span class="s2">&quot;get_ssl_cipher&quot;</span><span class="p">)</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span> 
-<span class="g g-Whitespace">    </span><span class="mi">384</span>     <span class="c1"># `get_ssl_cipher()` returns the name of the cipher being used.</span>
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/mysql/connector/connection_cext.py:360,</span> in <span class="ni">CMySQLConnection._open_connection</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span> <span class="k">except</span> <span class="n">MySQLInterfaceError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;errno&quot;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">360</span>         <span class="k">raise</span> <span class="n">get_mysql_exception</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span>             <span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">sqlstate</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">sqlstate</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span>         <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="k">raise</span> <span class="n">InterfaceError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span> <span class="bp">self</span><span class="o">.</span><span class="n">_do_handshake</span><span class="p">()</span>
 
 <span class="ne">DatabaseError</span>: 2005 (HY000): Unknown MySQL server host &#39;irismysql-2739-irismysql-2739.l.aivencloud.com&#39; (-2)
 </pre></div>
@@ -688,9 +684,9 @@ Requirement already satisfied: psycopg2 in /usr/local/python/3.12.1/lib/python3.
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">NearestNeighbors</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">NearestNeighbors</span>
 <span class="c1"># Load data Iris</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>

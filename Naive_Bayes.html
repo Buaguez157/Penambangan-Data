@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Naive_Bayes';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="K-Means Clustering Iris Data" href="K_Means.html" />
     <link rel="prev" title="Local Outlier Factor (LOF)" href="LOF.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2_Tipe_Data.html"><em><strong>Tipe Data Understanding &amp; Deteksi Outlier Menggunakan KNN</strong></em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="LOF.html">Local Outlier Factor (LOF)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K_Means.html">K-Means Clustering Iris Data</a></li>
 </ul>
 
     </div>
@@ -402,8 +404,8 @@ document.write(`
 <h2>1. Load Dataset Iris<a class="headerlink" href="#load-dataset-iris" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
@@ -424,7 +426,7 @@ document.write(`
 <p>Deteksi outlier menggunakan LOF:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
 
 <span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">outlier_pred</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1">#Nilai outlier = -1 artinya outlier, 1 artinya bukan outlier</span>
@@ -555,9 +557,9 @@ Data tanpa outlier : (144, 5)
 <p>Menggunakan <strong>GaussianNB</strong> dari scikit-learn:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
 </pre></div>
 </div>
 </div>
@@ -612,7 +614,7 @@ Data tanpa outlier : (144, 5)
 <p>Berikut adalah visualisasi perbandingan akurasi Naive Bayes pada data IRIS dengan dan tanpa outlier menggunakan matplotlib.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Misalnya hasil akurasi dari sebelumnya</span>
 <span class="n">akurasi_dengan_outlier</span> <span class="o">=</span> <span class="n">acc_with_outlier</span>  <span class="c1"># contoh: 1.0</span>
@@ -641,7 +643,7 @@ Data tanpa outlier : (144, 5)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca503600e2bb70285a72fb72faf85979cebae0054a8212ca368966281c909a50.png" src="_images/ca503600e2bb70285a72fb72faf85979cebae0054a8212ca368966281c909a50.png" />
+<img alt="_images/af2a4beb1bf9d8d15d4fb19f4223f18f227b1363b6007b4b67e81fd91ed84983.png" src="_images/af2a4beb1bf9d8d15d4fb19f4223f18f227b1363b6007b4b67e81fd91ed84983.png" />
 </div>
 </div>
 </section>
@@ -650,8 +652,8 @@ Data tanpa outlier : (144, 5)
 <p>Berikut adalah grafik visualisasi outlier dari dataset IRIS menggunakan LOF. Visualisasi data dalam dua dimensi menggunakan <strong>PCA</strong> agar lebih mudah lihat, lalu membedakan warnanya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
 
 <span class="c1"># Ambil hanya fitur (tanpa target dan outlier label)</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;outlier&#39;</span><span class="p">])</span>
@@ -699,7 +701,7 @@ Data tanpa outlier : (144, 5)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outlier indices: [15, 41, 98, 117, 118, 131]
 </pre></div>
 </div>
-<img alt="_images/1d261e4cb63c3d248662d00ece197014c8f67e99ed24383f11ccb1bcef32c224.png" src="_images/1d261e4cb63c3d248662d00ece197014c8f67e99ed24383f11ccb1bcef32c224.png" />
+<img alt="_images/2218eed4def55ef2a2cea63754d74676c8d81db03b4af04065366ae16d57d17f.png" src="_images/2218eed4def55ef2a2cea63754d74676c8d81db03b4af04065366ae16d57d17f.png" />
 </div>
 </div>
 </section>
@@ -743,6 +745,15 @@ Data tanpa outlier : (144, 5)
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Local Outlier Factor (LOF)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="K_Means.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">K-Means Clustering Iris Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
