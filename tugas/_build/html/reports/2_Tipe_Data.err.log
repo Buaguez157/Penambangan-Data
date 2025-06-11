@@ -159,7 +159,6 @@ plt.show()
 
 ----- stdout -----
 Collecting mysql-connector-python
------ stdout -----
   Downloading mysql_connector_python-9.3.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (7.5 kB)
 ----- stdout -----
 Collecting psycopg2
@@ -173,14 +172,12 @@ Collecting psycopg2
 [?25hDownloading mysql_connector_python-9.3.0-cp312-cp312-manylinux_2_28_x86_64.whl (33.9 MB)
 [?25l   [38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/33.9 MB[0m [31m?[0m eta [36m-:--:--[0m
 ----- stdout -----
-[2K   [38;2;249;38;114m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[38;2;249;38;114m╸[0m [32m33.8/33.9 MB[0m [31m357.2 MB/s[0m eta [36m0:00:01[0m
+[2K   [38;2;249;38;114m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[38;2;249;38;114m╸[0m [32m33.8/33.9 MB[0m [31m278.1 MB/s[0m eta [36m0:00:01[0m
 ----- stdout -----
-[2K   [38;2;249;38;114m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[38;2;249;38;114m╸[0m [32m33.8/33.9 MB[0m [31m357.2 MB/s[0m eta [36m0:00:01[0m
+[2K   [38;2;249;38;114m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[38;2;249;38;114m╸[0m [32m33.8/33.9 MB[0m [31m278.1 MB/s[0m eta [36m0:00:01[0m
 ----- stdout -----
-[2K   [38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m33.9/33.9 MB[0m [31m62.4 MB/s[0m eta [36m0:00:00[0m
-[?25h
------ stdout -----
-Building wheels for collected packages: psycopg2
+[2K   [38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m33.9/33.9 MB[0m [31m59.1 MB/s[0m eta [36m0:00:00[0m
+[?25hBuilding wheels for collected packages: psycopg2
 ----- stdout -----
   Building wheel for psycopg2 (setup.py) ... [?25l-
 ----- stdout -----
@@ -252,18 +249,16 @@ Building wheels for collected packages: psycopg2
 ----- stdout -----
  |
 ----- stdout -----
- /
+ / done
 ----- stdout -----
- -
------ stdout -----
- \ done
-[?25h  Created wheel for psycopg2: filename=psycopg2-2.9.10-cp312-cp312-linux_x86_64.whl size=635609 sha256=325f6fbe1d99b5236b65b6845b2620702bdfad2a882bd1d3b61af255d87c2ab2
+[?25h  Created wheel for psycopg2: filename=psycopg2-2.9.10-cp312-cp312-linux_x86_64.whl size=635638 sha256=c9b35e00b8adac4082760dcf00b7d212bcbe320f36d7a136ec88d38bea898551
   Stored in directory: /home/codespace/.cache/pip/wheels/ac/bb/ce/afa589c50b6004d3a06fc691e71bd09c9bd5f01e5921e5329b
 Successfully built psycopg2
 ----- stdout -----
 Installing collected packages: psycopg2, mysql-connector-python
 ----- stdout -----
 Successfully installed mysql-connector-python-9.3.0 psycopg2-2.9.10
+----- stdout -----
 
 [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is available: [0m[31;49m25.0.1[0m[39;49m -> [0m[32;49m25.1.1[0m
 [1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpython3 -m pip install --upgrade pip[0m
