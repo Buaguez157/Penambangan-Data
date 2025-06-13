@@ -11,3 +11,4 @@ chapters:
 - file: Naive_Bayes
 - file: K_Means
 - file: DecisionTreeClassifier
+- file: Dikritisasi
